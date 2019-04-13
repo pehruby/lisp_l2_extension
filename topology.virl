@@ -1,0 +1,1413 @@
+<?xml version='1.0' encoding='UTF-8' standalone='yes'?>
+<topology xmlns="http://www.cisco.com/VIRL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" schemaVersion="0.95" xsi:schemaLocation="http://www.cisco.com/VIRL https://raw.github.com/CiscoVIRL/schema/v0.95/virl.xsd">
+    <extensions>
+        <entry key="management_network" type="String">exclusive</entry>
+    </extensions>
+    <node name="csr_cloud" type="SIMPLE" subtype="CSR1000v" location="786,326">
+        <extensions>
+            <entry key="Auto-generate config" type="Boolean">false</entry>
+            <entry key="config" type="String">!
+! Last configuration change at 15:01:00 UTC Sat Apr 13 2019 by cisco
+!
+version 16.6
+service config
+service timestamps debug datetime msec
+service timestamps log datetime msec
+platform qfp utilization monitor load 80
+no platform punt-keepalive disable-kernel-core
+platform console serial
+!
+hostname csr_cloud
+!
+boot-start-marker
+boot-end-marker
+!
+!
+vrf definition Mgmt-intf
+ !
+ address-family ipv4
+ exit-address-family
+!
+enable secret 5 $1$9IS1$kvGLiUYajD5mpsh.N2hds0
+!
+no aaa new-model
+!
+!
+!
+!
+!
+!
+!
+!
+!
+ip domain name virl.info
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+subscriber templating
+! 
+! 
+! 
+! 
+!
+!
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+!
+crypto pki trustpoint TP-self-signed-2843678944
+ enrollment selfsigned
+ subject-name cn=IOS-Self-Signed-Certificate-2843678944
+ revocation-check none
+ rsakeypair TP-self-signed-2843678944
+!
+!
+crypto pki certificate chain TP-self-signed-2843678944
+ certificate self-signed 01
+  30820330 30820218 A0030201 02020101 300D0609 2A864886 F70D0101 05050030 
+  31312F30 2D060355 04031326 494F532D 53656C66 2D536967 6E65642D 43657274 
+  69666963 6174652D 32383433 36373839 3434301E 170D3139 30343133 31343434 
+  33335A17 0D323030 31303130 30303030 305A3031 312F302D 06035504 03132649 
+  4F532D53 656C662D 5369676E 65642D43 65727469 66696361 74652D32 38343336 
+  37383934 34308201 22300D06 092A8648 86F70D01 01010500 0382010F 00308201 
+  0A028201 0100A6C1 230C2654 8F9702A7 D40EAEBA E042A249 82A544BE 971C1C45 
+  76673013 5B5648F6 705A83F6 BDB73E3D 566406C7 00D5C661 FF982A2A C29FAAEA 
+  1439FC4D 7A2A12A1 88BB98C8 8D9C6EF2 8E98FF6D F8CF74F7 BAF75907 DFC66D7A 
+  2F870523 699C2490 D9219BBB BC297E72 1AE10615 98F58D4A AFF1A513 3B981E86 
+  1FEADC34 49BCF869 499242D1 35715A3C 506B6A87 5B36B315 DFF1043F 681CA15F 
+  40F1AF0C C2D166A4 65EF620F 665ABF30 5707A5B9 9A1BBB05 30F5EF2F B1920166 
+  4081C474 8FF4EF9A 4FA9D514 93F17C63 07EAF30C 365DFAC6 B8505AA2 938215A1 
+  A4D8244C CA814068 A21E2E7D ECF7BE90 5744B3B3 D40ADBC2 98574FE3 B404D49A 
+  5E898F54 4BD50203 010001A3 53305130 0F060355 1D130101 FF040530 030101FF 
+  301F0603 551D2304 18301680 1456CC5A 91DE0C1D CFF9558E 5AF8A176 D2762FAF 
+  0A301D06 03551D0E 04160414 56CC5A91 DE0C1DCF F9558E5A F8A176D2 762FAF0A 
+  300D0609 2A864886 F70D0101 05050003 82010100 1D7CEC3E 2E41AAD9 9F82773B 
+  5C670C4D 24714115 F2E2C78A B1B38A96 5E5C9504 98F62BF1 13601CB6 EE64054A 
+  283C5894 BE636871 5E220DA2 AC100B72 321276A9 F0916A8A 47B4316C F736857E 
+  B35037A8 91AE563E 9EBB947A 37B7D2D5 112AFF2C 4B8C7F4D B0467FC7 CA345996 
+  AB960E30 B384EFE5 82838C34 40E2B7D5 A70F9ABF 9C13267A 52B3632A 88A5CCC4 
+  4F5ABF3E 7C840F74 E86AD91B AAECB417 F0CC0A96 C6B442BE C53E1810 36B2250A 
+  B19CB112 390F75AC 82511A83 5501B555 CC060E55 FB7EF4E5 C89499CF 6C9CD18B 
+  DFF03810 A94F8E0E C900B2CD F4F48AD7 9E185A62 9B97BB3C F23107C1 BAE9C57A 
+  953F066C 3623B5AA A5747ABE D1187774 FEECE780
+  	quit
+!
+!
+!
+!
+!
+!
+!
+!
+!
+license udi pid CSR1000V sn 9EPOFY2PRXQ
+diagnostic bootup level minimal
+spanning-tree extend system-id
+!
+!
+!
+username cisco privilege 15 secret 5 $1$scTl$Yykl5ub40MdGE29C7Y52f1
+!
+redundancy
+!
+!
+!
+!
+!
+!
+! 
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+! 
+! 
+!
+!
+interface GigabitEthernet1
+ vrf forwarding Mgmt-intf
+ ip address 10.255.0.3 255.255.0.0
+ negotiation auto
+ no mop enabled
+ no mop sysid
+!
+interface GigabitEthernet2
+ ip address 75.126.47.99 255.255.255.0
+ negotiation auto
+ no mop enabled
+ no mop sysid
+!
+interface GigabitEthernet3
+ no ip address
+ negotiation auto
+ no mop enabled
+ no mop sysid
+!
+interface GigabitEthernet3.5
+ encapsulation dot1Q 5
+ ip address 10.0.5.1 255.255.255.0
+!
+interface GigabitEthernet3.6
+ encapsulation dot1Q 6
+ ip address 10.0.6.1 255.255.255.0
+!
+!
+virtual-service csr_mgmt
+!
+ip forward-protocol nd
+no ip http server
+ip http authentication local
+no ip http secure-server
+ip http client source-interface GigabitEthernet1
+ip route 0.0.0.0 0.0.0.0 75.126.47.97
+!
+ip ssh server algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+ip ssh client algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+!
+!
+!
+!
+!
+control-plane
+!
+!
+!
+!
+!
+!
+line con 0
+ stopbits 1
+line vty 0 4
+ exec-timeout 15 0
+ login local
+ transport input telnet ssh
+!
+!
+!
+!
+!
+event manager session cli username "cisco"
+event manager applet EEM_SSH_Keygen authorization bypass
+ event syslog pattern "SYS-5-RESTART"
+ action 0.0 info type routername
+ action 0.1 set status "none"
+ action 1.0 cli command "enable"
+ action 2.0 cli command "show ip ssh | include ^SSH"
+ action 2.1 regexp "([ED][^ ]+)" "$_cli_result" result status
+ action 2.2 syslog priority informational msg "SSH is currently $status"
+ action 3.0 if $status eq "Disabled"
+ action 3.1  cli command "configure terminal"
+ action 3.2  cli command "crypto key generate rsa gen modulus 1024"
+ action 3.3  cli command "end"
+ action 3.4  cli command "write mem"
+ action 3.5  syslog priority informational msg "SSH keys generated by EEM."
+ action 4.0 end
+event manager applet EEM_SSH_Keygen2 authorization bypass
+ event syslog pattern "CONFIG_DONE" maxrun 60
+ action 0.0 info type routername
+ action 0.1 set status "none"
+ action 0.2 wait 20
+ action 1.0 cli command "enable"
+ action 2.0 cli command "show ip ssh | include ^SSH"
+ action 2.1 regexp "([ED][^ ]+)" "$_cli_result" result status
+ action 2.2 syslog priority informational msg "SSH is currently $status"
+ action 3.0 if $status eq "Disabled"
+ action 3.1  cli command "configure terminal"
+ action 3.2  cli command "crypto key generate rsa gen modulus 1024"
+ action 3.3  cli command "end"
+ action 3.4  cli command "write mem"
+ action 3.5  syslog priority informational msg "SSH keys generated by EEM."
+ action 4.0 end
+!
+end
+
+</entry>
+        </extensions>
+        <interface id="0" name="GigabitEthernet2"/>
+        <interface id="1" name="GigabitEthernet3"/>
+    </node>
+    <node name="csr_ent" type="SIMPLE" subtype="CSR1000v" location="298,315">
+        <extensions>
+            <entry key="Auto-generate config" type="Boolean">false</entry>
+            <entry key="config" type="String">!
+! Last configuration change at 15:19:08 UTC Sat Apr 13 2019 by cisco
+!
+version 16.6
+service config
+service timestamps debug datetime msec
+service timestamps log datetime msec
+platform qfp utilization monitor load 80
+no platform punt-keepalive disable-kernel-core
+platform console serial
+!
+hostname csr_ent
+!
+boot-start-marker
+boot-end-marker
+!
+!
+vrf definition Mgmt-intf
+ rd 338:1
+ !
+ address-family ipv4
+ exit-address-family
+!
+enable secret 5 $1$kmpZ$NArBnYTNHV1GR9XzYUI0f.
+!
+no aaa new-model
+!
+!
+!
+!
+!
+!
+!
+!
+!
+ip domain name virl.info
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+subscriber templating
+! 
+! 
+! 
+! 
+!
+!
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+!
+crypto pki trustpoint TP-self-signed-3185813904
+ enrollment selfsigned
+ subject-name cn=IOS-Self-Signed-Certificate-3185813904
+ revocation-check none
+ rsakeypair TP-self-signed-3185813904
+!
+!
+crypto pki certificate chain TP-self-signed-3185813904
+ certificate self-signed 01
+  30820330 30820218 A0030201 02020101 300D0609 2A864886 F70D0101 05050030 
+  31312F30 2D060355 04031326 494F532D 53656C66 2D536967 6E65642D 43657274 
+  69666963 6174652D 33313835 38313339 3034301E 170D3139 30343133 31343434 
+  33365A17 0D323030 31303130 30303030 305A3031 312F302D 06035504 03132649 
+  4F532D53 656C662D 5369676E 65642D43 65727469 66696361 74652D33 31383538 
+  31333930 34308201 22300D06 092A8648 86F70D01 01010500 0382010F 00308201 
+  0A028201 0100A308 3095B1AA 67B7033A FDAE857E C6B462CB 9E950867 F96CD608 
+  B72B85F1 8D59988D 007A75A9 E1CAB2F7 92FD87F2 045248CA F6A07102 022BD7B5 
+  52DA2FC0 D28203D8 41EAEB59 8994CC13 3C3C8AE0 095E4B85 4DC1D4D0 DADFF871 
+  2A8923D5 BBA864A6 1BA27D27 D789D403 9CD1EE24 3392834E C3032500 D0F6FEC1 
+  22B6D813 ED9561E0 A04F1B3C 8E537A2E 410366C7 B353931B 0EEC3E52 2C24D95D 
+  0354736B 81741111 A8266CC3 8F651D12 B30929A5 188FE48B F037E5BC 059C96BF 
+  1F762005 369DDD49 F1F1031D 9AE8972B 8A82601E 405510E3 FB4B523B 03947329 
+  B35B10E9 2BF6498D 15E8034E C0C2673A 6F15DF19 3A9338EA 4A359DF9 65A2C06C 
+  6FE41938 F79D0203 010001A3 53305130 0F060355 1D130101 FF040530 030101FF 
+  301F0603 551D2304 18301680 14145E49 C38E710F E814D59B 5EDB0D9E ABA13B88 
+  0D301D06 03551D0E 04160414 145E49C3 8E710FE8 14D59B5E DB0D9EAB A13B880D 
+  300D0609 2A864886 F70D0101 05050003 82010100 4220CDFD 76F099F2 9903EF4D 
+  3FB4D808 C7440B19 65808CEC 9CCE1010 C3E65DFA 8F0DDCA4 AEA0919A 2D7D082F 
+  CA88068D D1BCCE3C B979173C 4948C2FC 80E407CD 701DA23D 1FE2DE69 1153A9F3 
+  ED305E81 628C1766 7D12C33C F34F3F81 0922615E 443B40BD C555D7C1 676BAD29 
+  F6B0C724 84D367C4 28B4FBC9 51F43389 2B6564CA 3CEB59EE B10FEF07 5491B8FD 
+  A05F2135 1BCABCBE 95AA491F F9A16EC0 E6DE6EF9 C054A24D B12E9701 89201A9A 
+  CA681C58 91974795 32BAFC31 341561F9 D2410FC1 2E2311E7 A9167114 EF90FFF6 
+  2689C76F 199D5E65 0AAD8694 74021796 3CDCB837 C6779FD5 CB92127C EB1835D7 
+  44A2CEB3 AA1850A4 8D5CD000 077EBFBA 1FB84829
+  	quit
+!
+!
+!
+!
+!
+!
+!
+!
+!
+license udi pid CSR1000V sn 9Y1WAC8DXYD
+diagnostic bootup level minimal
+spanning-tree extend system-id
+!
+!
+!
+username cisco privilege 15 secret 5 $1$n8FR$PfeJJk/XWqp8UyDeG6gl.1
+!
+redundancy
+!
+!
+!
+!
+!
+!
+! 
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+! 
+! 
+!
+!
+interface GigabitEthernet1
+ vrf forwarding Mgmt-intf
+ ip address 10.255.0.4 255.255.0.0
+ negotiation auto
+ no mop enabled
+ no mop sysid
+!
+interface GigabitEthernet2
+ no ip address
+ negotiation auto
+ no mop enabled
+ no mop sysid
+!
+interface GigabitEthernet2.5
+ encapsulation dot1Q 5
+ ip address 10.0.5.10 255.255.255.0
+!
+interface GigabitEthernet2.6
+ encapsulation dot1Q 6
+ ip address 10.0.6.10 255.255.255.0
+!
+interface GigabitEthernet3
+ ip address 173.36.217.72 255.255.255.0
+ negotiation auto
+ no mop enabled
+ no mop sysid
+!
+!
+virtual-service csr_mgmt
+!
+ip forward-protocol nd
+no ip http server
+ip http authentication local
+no ip http secure-server
+ip http client source-interface GigabitEthernet1
+ip route 0.0.0.0 0.0.0.0 173.36.217.1
+!
+ip ssh server algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+ip ssh client algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+!
+!
+!
+!
+!
+control-plane
+!
+!
+!
+!
+!
+!
+line con 0
+ stopbits 1
+line vty 0 4
+ exec-timeout 15 0
+ login local
+ transport input telnet ssh
+!
+!
+!
+!
+!
+event manager session cli username "cisco"
+event manager applet EEM_SSH_Keygen authorization bypass
+ event syslog pattern "SYS-5-RESTART"
+ action 0.0 info type routername
+ action 0.1 set status "none"
+ action 1.0 cli command "enable"
+ action 2.0 cli command "show ip ssh | include ^SSH"
+ action 2.1 regexp "([ED][^ ]+)" "$_cli_result" result status
+ action 2.2 syslog priority informational msg "SSH is currently $status"
+ action 3.0 if $status eq "Disabled"
+ action 3.1  cli command "configure terminal"
+ action 3.2  cli command "crypto key generate rsa gen modulus 1024"
+ action 3.3  cli command "end"
+ action 3.4  cli command "write mem"
+ action 3.5  syslog priority informational msg "SSH keys generated by EEM."
+ action 4.0 end
+event manager applet EEM_SSH_Keygen2 authorization bypass
+ event syslog pattern "CONFIG_DONE" maxrun 60
+ action 0.0 info type routername
+ action 0.1 set status "none"
+ action 0.2 wait 20
+ action 1.0 cli command "enable"
+ action 2.0 cli command "show ip ssh | include ^SSH"
+ action 2.1 regexp "([ED][^ ]+)" "$_cli_result" result status
+ action 2.2 syslog priority informational msg "SSH is currently $status"
+ action 3.0 if $status eq "Disabled"
+ action 3.1  cli command "configure terminal"
+ action 3.2  cli command "crypto key generate rsa gen modulus 1024"
+ action 3.3  cli command "end"
+ action 3.4  cli command "write mem"
+ action 3.5  syslog priority informational msg "SSH keys generated by EEM."
+ action 4.0 end
+!
+end
+
+</entry>
+        </extensions>
+        <interface id="0" name="GigabitEthernet2"/>
+        <interface id="1" name="GigabitEthernet3"/>
+    </node>
+    <node name="iosvl2-1" type="SIMPLE" subtype="IOSvL2" location="294,250">
+        <extensions>
+            <entry key="Auto-generate config" type="Boolean">false</entry>
+            <entry key="config" type="String">!
+! Last configuration change at 15:09:20 UTC Sat Apr 13 2019 by cisco
+!
+version 15.2
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+service compress-config
+!
+hostname sw1
+!
+boot-start-marker
+boot-end-marker
+!
+!
+vrf definition Mgmt-intf
+ !
+ address-family ipv4
+ exit-address-family
+ !
+ address-family ipv6
+ exit-address-family
+!
+enable secret 5 $1$36qI$Xh.qGhoJrsTPafxhqBzNJ/
+!
+username x privilege 15 password 0 x
+username cisco privilege 15 password 0 cisco
+no aaa new-model
+!
+!
+!
+!
+!
+vtp mode transparent
+!
+!
+!
+ip domain-name virl.info
+ip cef
+no ipv6 cef
+!
+!
+!
+spanning-tree mode pvst
+spanning-tree extend system-id
+!
+vlan internal allocation policy ascending
+!
+vlan 5-6 
+!
+! 
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface GigabitEthernet0/0
+ description OOB Management
+ no switchport
+ vrf forwarding Mgmt-intf
+ ip address 10.255.0.7 255.255.0.0
+ negotiation auto
+!
+interface GigabitEthernet0/1
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ media-type rj45
+ negotiation auto
+!
+interface GigabitEthernet0/2
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ media-type rj45
+ negotiation auto
+!
+interface GigabitEthernet0/3
+ switchport access vlan 5
+ switchport mode access
+ media-type rj45
+ negotiation auto
+!
+interface GigabitEthernet1/0
+ switchport access vlan 6
+ switchport mode access
+ media-type rj45
+ negotiation auto
+!
+ip forward-protocol nd
+!
+no ip http server
+no ip http secure-server
+!
+!
+!
+!
+!
+!
+control-plane
+!
+banner exec `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+banner incoming `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+banner login `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+!
+line con 0
+ privilege level 15
+line aux 0
+line vty 0 4
+ exec-timeout 0 0
+ password x
+ login local
+ transport input telnet ssh
+!
+ntp server pnpntpserver.openstacklocal
+event manager session cli username "cisco"
+event manager applet EEM_SSH_Keygen authorization bypass
+ event syslog pattern "SYS-5-RESTART"
+ action 0.0 info type routername
+ action 0.1 set status "none"
+ action 1.0 cli command "enable"
+ action 2.0 cli command "show ip ssh | include ^SSH"
+ action 2.1 regexp "([ED][^ ]+)" "$_cli_result" result status
+ action 2.2 syslog priority informational msg "SSH is currently $status"
+ action 3.0 if $status eq "Disabled"
+ action 3.1  cli command "configure terminal"
+ action 3.2  cli command "crypto key generate rsa gen modulus 1024"
+ action 3.3  cli command "end"
+ action 3.4  cli command "write mem"
+ action 3.5  syslog priority informational msg "SSH keys generated by EEM."
+ action 4.0 end
+event manager applet EEM_SSH_Keygen2 authorization bypass
+ event syslog pattern "CONFIG_DONE" maxrun 60
+ action 0.0 info type routername
+ action 0.1 set status "none"
+ action 0.2 wait 20
+ action 1.0 cli command "enable"
+ action 2.0 cli command "show ip ssh | include ^SSH"
+ action 2.1 regexp "([ED][^ ]+)" "$_cli_result" result status
+ action 2.2 syslog priority informational msg "SSH is currently $status"
+ action 3.0 if $status eq "Disabled"
+ action 3.1  cli command "configure terminal"
+ action 3.2  cli command "crypto key generate rsa gen modulus 1024"
+ action 3.3  cli command "end"
+ action 3.4  cli command "write mem"
+ action 3.5  syslog priority informational msg "SSH keys generated by EEM."
+ action 4.0 end
+!
+end
+
+</entry>
+        </extensions>
+        <interface id="0" name="GigabitEthernet0/1"/>
+        <interface id="1" name="GigabitEthernet0/2"/>
+        <interface id="2" name="GigabitEthernet0/3"/>
+        <interface id="3" name="GigabitEthernet1/0"/>
+    </node>
+    <node name="iosvl2-2" type="SIMPLE" subtype="IOSvL2" location="782,253">
+        <extensions>
+            <entry key="Auto-generate config" type="Boolean">false</entry>
+            <entry key="config" type="String">!
+! Last configuration change at 15:22:27 UTC Sat Apr 13 2019 by cisco
+!
+version 15.2
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+service compress-config
+!
+hostname sw2
+!
+boot-start-marker
+boot-end-marker
+!
+!
+vrf definition Mgmt-intf
+ !
+ address-family ipv4
+ exit-address-family
+ !
+ address-family ipv6
+ exit-address-family
+!
+enable secret 5 $1$36qI$Xh.qGhoJrsTPafxhqBzNJ/
+!
+username x privilege 15 password 0 x
+username cisco privilege 15 password 0 cisco
+no aaa new-model
+!
+!
+!
+!
+!
+vtp mode transparent
+!
+!
+!
+ip domain-name virl.info
+ip cef
+no ipv6 cef
+!
+!
+!
+spanning-tree mode pvst
+spanning-tree extend system-id
+!
+vlan internal allocation policy ascending
+!
+vlan 5-6 
+!
+! 
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface GigabitEthernet0/0
+ description OOB Management
+ no switchport
+ vrf forwarding Mgmt-intf
+ ip address 10.255.0.8 255.255.0.0
+ negotiation auto
+!
+interface GigabitEthernet0/1
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ media-type rj45
+ negotiation auto
+!
+interface GigabitEthernet0/2
+ switchport access vlan 5
+ switchport mode access
+ media-type rj45
+ negotiation auto
+!
+interface GigabitEthernet0/3
+ switchport access vlan 6
+ switchport mode access
+ media-type rj45
+ negotiation auto
+!
+ip forward-protocol nd
+!
+no ip http server
+no ip http secure-server
+!
+!
+!
+!
+!
+!
+control-plane
+!
+banner exec `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+banner incoming `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+banner login `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+!
+line con 0
+ privilege level 15
+line aux 0
+line vty 0 4
+ exec-timeout 0 0
+ password x
+ login local
+ transport input telnet ssh
+!
+ntp server pnpntpserver.openstacklocal
+event manager session cli username "cisco"
+event manager applet EEM_SSH_Keygen authorization bypass
+ event syslog pattern "SYS-5-RESTART"
+ action 0.0 info type routername
+ action 0.1 set status "none"
+ action 1.0 cli command "enable"
+ action 2.0 cli command "show ip ssh | include ^SSH"
+ action 2.1 regexp "([ED][^ ]+)" "$_cli_result" result status
+ action 2.2 syslog priority informational msg "SSH is currently $status"
+ action 3.0 if $status eq "Disabled"
+ action 3.1  cli command "configure terminal"
+ action 3.2  cli command "crypto key generate rsa gen modulus 1024"
+ action 3.3  cli command "end"
+ action 3.4  cli command "write mem"
+ action 3.5  syslog priority informational msg "SSH keys generated by EEM."
+ action 4.0 end
+event manager applet EEM_SSH_Keygen2 authorization bypass
+ event syslog pattern "CONFIG_DONE" maxrun 60
+ action 0.0 info type routername
+ action 0.1 set status "none"
+ action 0.2 wait 20
+ action 1.0 cli command "enable"
+ action 2.0 cli command "show ip ssh | include ^SSH"
+ action 2.1 regexp "([ED][^ ]+)" "$_cli_result" result status
+ action 2.2 syslog priority informational msg "SSH is currently $status"
+ action 3.0 if $status eq "Disabled"
+ action 3.1  cli command "configure terminal"
+ action 3.2  cli command "crypto key generate rsa gen modulus 1024"
+ action 3.3  cli command "end"
+ action 3.4  cli command "write mem"
+ action 3.5  syslog priority informational msg "SSH keys generated by EEM."
+ action 4.0 end
+!
+end
+
+</entry>
+        </extensions>
+        <interface id="0" name="GigabitEthernet0/1"/>
+        <interface id="1" name="GigabitEthernet0/2"/>
+        <interface id="2" name="GigabitEthernet0/3"/>
+    </node>
+    <node name="iosv-1" type="SIMPLE" subtype="IOSv" location="368,245">
+        <extensions>
+            <entry key="Auto-generate config" type="Boolean">false</entry>
+            <entry key="config" type="String">!
+! Last configuration change at 15:16:00 UTC Sat Apr 13 2019 by cisco
+!
+version 15.6
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname ios-ent
+!
+boot-start-marker
+boot-end-marker
+!
+!
+vrf definition Mgmt-intf
+ !
+ address-family ipv4
+ exit-address-family
+!
+!
+no aaa new-model
+!
+!
+!
+mmi polling-interval 60
+no mmi auto-configure
+no mmi pvc
+mmi snmp-timeout 180
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+ip domain name virl.info
+ip cef
+no ipv6 cef
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+username cisco privilege 15 password 0 cisco
+!
+redundancy
+!
+!
+! 
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface GigabitEthernet0/0
+ vrf forwarding Mgmt-intf
+ ip address 10.255.0.5 255.255.0.0
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/1
+ no ip address
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/1.5
+ encapsulation dot1Q 5
+ ip address 10.0.5.1 255.255.255.0
+!
+interface GigabitEthernet0/1.6
+ encapsulation dot1Q 6
+ ip address 10.0.6.1 255.255.255.0
+!
+ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+ip ssh server algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+ip ssh client algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+!
+ipv6 ioam timestamp
+!
+!
+!
+control-plane
+!
+banner exec `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+banner incoming `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+banner login `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+!
+line con 0
+line aux 0
+line vty 0 4
+ exec-timeout 15 0
+ login local
+ transport input telnet ssh
+!
+no scheduler allocate
+event manager session cli username "cisco"
+event manager applet EEM_SSH_Keygen authorization bypass
+ event syslog pattern "SYS-5-RESTART"
+ action 0.0 info type routername
+ action 0.1 set status "none"
+ action 1.0 cli command "enable"
+ action 2.0 cli command "show ip ssh | include ^SSH"
+ action 2.1 regexp "([ED][^ ]+)" "$_cli_result" result status
+ action 2.2 syslog priority informational msg "SSH is currently $status"
+ action 3.0 if $status eq "Disabled"
+ action 3.1  cli command "configure terminal"
+ action 3.2  cli command "crypto key generate rsa gen modulus 1024"
+ action 3.3  cli command "end"
+ action 3.4  cli command "write mem"
+ action 3.5  syslog priority informational msg "SSH keys generated by EEM."
+ action 4.0 end
+event manager applet EEM_SSH_Keygen2 authorization bypass
+ event syslog pattern "CONFIG_DONE" maxrun 60
+ action 0.0 info type routername
+ action 0.1 set status "none"
+ action 0.2 wait 20
+ action 1.0 cli command "enable"
+ action 2.0 cli command "show ip ssh | include ^SSH"
+ action 2.1 regexp "([ED][^ ]+)" "$_cli_result" result status
+ action 2.2 syslog priority informational msg "SSH is currently $status"
+ action 3.0 if $status eq "Disabled"
+ action 3.1  cli command "configure terminal"
+ action 3.2  cli command "crypto key generate rsa gen modulus 1024"
+ action 3.3  cli command "end"
+ action 3.4  cli command "write mem"
+ action 3.5  syslog priority informational msg "SSH keys generated by EEM."
+ action 4.0 end
+!
+end
+
+</entry>
+        </extensions>
+        <interface id="0" name="GigabitEthernet0/1"/>
+    </node>
+    <node name="Internet" type="SIMPLE" subtype="IOSv" location="544,311">
+        <extensions>
+            <entry key="Auto-generate config" type="Boolean">false</entry>
+            <entry key="config" type="String">!
+! Last configuration change at 14:58:02 UTC Sat Apr 13 2019 by cisco
+!
+version 15.6
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname Internet
+!
+boot-start-marker
+boot-end-marker
+!
+!
+vrf definition Mgmt-intf
+ !
+ address-family ipv4
+ exit-address-family
+!
+!
+no aaa new-model
+!
+!
+!
+mmi polling-interval 60
+no mmi auto-configure
+no mmi pvc
+mmi snmp-timeout 180
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+ip domain name virl.info
+ip cef
+no ipv6 cef
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+username cisco privilege 15 password 0 cisco
+!
+redundancy
+!
+!
+! 
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface GigabitEthernet0/0
+ vrf forwarding Mgmt-intf
+ ip address 10.255.0.2 255.255.0.0
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/1
+ ip address 173.36.217.1 255.255.255.0
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/2
+ ip address 75.126.47.97 255.255.255.0
+ duplex auto
+ speed auto
+ media-type rj45
+!
+ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+ip ssh server algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+ip ssh client algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+!
+ipv6 ioam timestamp
+!
+!
+!
+control-plane
+!
+banner exec `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+banner incoming `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+banner login `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+!
+line con 0
+line aux 0
+line vty 0 4
+ exec-timeout 15 0
+ login local
+ transport input telnet ssh
+!
+no scheduler allocate
+event manager session cli username "cisco"
+event manager applet EEM_SSH_Keygen authorization bypass
+ event syslog pattern "SYS-5-RESTART"
+ action 0.0 info type routername
+ action 0.1 set status "none"
+ action 1.0 cli command "enable"
+ action 2.0 cli command "show ip ssh | include ^SSH"
+ action 2.1 regexp "([ED][^ ]+)" "$_cli_result" result status
+ action 2.2 syslog priority informational msg "SSH is currently $status"
+ action 3.0 if $status eq "Disabled"
+ action 3.1  cli command "configure terminal"
+ action 3.2  cli command "crypto key generate rsa gen modulus 1024"
+ action 3.3  cli command "end"
+ action 3.4  cli command "write mem"
+ action 3.5  syslog priority informational msg "SSH keys generated by EEM."
+ action 4.0 end
+event manager applet EEM_SSH_Keygen2 authorization bypass
+ event syslog pattern "CONFIG_DONE" maxrun 60
+ action 0.0 info type routername
+ action 0.1 set status "none"
+ action 0.2 wait 20
+ action 1.0 cli command "enable"
+ action 2.0 cli command "show ip ssh | include ^SSH"
+ action 2.1 regexp "([ED][^ ]+)" "$_cli_result" result status
+ action 2.2 syslog priority informational msg "SSH is currently $status"
+ action 3.0 if $status eq "Disabled"
+ action 3.1  cli command "configure terminal"
+ action 3.2  cli command "crypto key generate rsa gen modulus 1024"
+ action 3.3  cli command "end"
+ action 3.4  cli command "write mem"
+ action 3.5  syslog priority informational msg "SSH keys generated by EEM."
+ action 4.0 end
+!
+end
+
+</entry>
+        </extensions>
+        <interface id="0" name="GigabitEthernet0/1"/>
+        <interface id="1" name="GigabitEthernet0/2"/>
+    </node>
+    <node name="lxc-1" type="SIMPLE" subtype="lxc" location="215,141">
+        <extensions>
+            <entry key="config" type="String">#cloud-config
+bootcmd:
+- ln -s -t /etc/rc.d /etc/rc.local
+hostname: lxc-1
+manage_etc_hosts: true
+runcmd:
+- systemctl start rc-local
+- sed -i '/^\s*PasswordAuthentication\s\+no/d' /etc/ssh/sshd_config
+- echo "UseDNS no" &gt;&gt; /etc/ssh/sshd_config
+- service ssh restart
+- service sshd restart
+users:
+- default
+- gecos: User configured by VIRL Configuration Engine 0.23.10
+  lock-passwd: false
+  name: cisco
+  plain-text-passwd: cisco
+  shell: /bin/bash
+  ssh-authorized-keys:
+  - VIRL-USER-SSH-PUBLIC-KEY
+  sudo: ALL=(ALL) ALL
+write_files:
+- path: /etc/systemd/system/dhclient@.service
+  content: |
+    [Unit]
+    Description=Run dhclient on %i interface
+    After=network.target
+    [Service]
+    Type=oneshot
+    ExecStart=/sbin/dhclient %i -pf /var/run/dhclient.%i.pid -lf /var/lib/dhclient/dhclient.%i.lease
+    RemainAfterExit=yes
+  owner: root:root
+  permissions: '0644'
+- path: /etc/rc.local
+  owner: root:root
+  permissions: '0755'
+  content: |-
+    #!/bin/sh
+    ifconfig eth1 up 10.0.5.199 netmask 255.255.255.0
+    route add -net 10.0.0.0/8 gw 10.0.5.1 dev eth1
+    exit 0
+</entry>
+        </extensions>
+        <interface id="0" name="eth1" ipv4="10.0.0.2" netPrefixLenV4="29"/>
+    </node>
+    <node name="lxc-2" type="SIMPLE" subtype="lxc" location="283,135">
+        <extensions>
+            <entry key="config" type="String">#cloud-config
+bootcmd:
+- ln -s -t /etc/rc.d /etc/rc.local
+hostname: lxc-2
+manage_etc_hosts: true
+runcmd:
+- systemctl start rc-local
+- sed -i '/^\s*PasswordAuthentication\s\+no/d' /etc/ssh/sshd_config
+- echo "UseDNS no" &gt;&gt; /etc/ssh/sshd_config
+- service ssh restart
+- service sshd restart
+users:
+- default
+- gecos: User configured by VIRL Configuration Engine 0.23.10
+  lock-passwd: false
+  name: cisco
+  plain-text-passwd: cisco
+  shell: /bin/bash
+  ssh-authorized-keys:
+  - VIRL-USER-SSH-PUBLIC-KEY
+  sudo: ALL=(ALL) ALL
+write_files:
+- path: /etc/systemd/system/dhclient@.service
+  content: |
+    [Unit]
+    Description=Run dhclient on %i interface
+    After=network.target
+    [Service]
+    Type=oneshot
+    ExecStart=/sbin/dhclient %i -pf /var/run/dhclient.%i.pid -lf /var/lib/dhclient/dhclient.%i.lease
+    RemainAfterExit=yes
+  owner: root:root
+  permissions: '0644'
+- path: /etc/rc.local
+  owner: root:root
+  permissions: '0755'
+  content: |-
+    #!/bin/sh
+    ifconfig eth1 up 10.0.6.199 netmask 255.255.255.0
+    route add -net 10.0.0.0/8 gw 10.0.6.1 dev eth1
+    exit 0
+</entry>
+        </extensions>
+        <interface id="0" name="eth1" ipv4="10.0.0.3" netPrefixLenV4="29"/>
+    </node>
+    <node name="lxc-3" type="SIMPLE" subtype="lxc" location="774,151">
+        <extensions>
+            <entry key="config" type="String">#cloud-config
+bootcmd:
+- ln -s -t /etc/rc.d /etc/rc.local
+hostname: lxc-3
+manage_etc_hosts: true
+runcmd:
+- systemctl start rc-local
+- sed -i '/^\s*PasswordAuthentication\s\+no/d' /etc/ssh/sshd_config
+- echo "UseDNS no" &gt;&gt; /etc/ssh/sshd_config
+- service ssh restart
+- service sshd restart
+users:
+- default
+- gecos: User configured by VIRL Configuration Engine 0.23.10
+  lock-passwd: false
+  name: cisco
+  plain-text-passwd: cisco
+  shell: /bin/bash
+  ssh-authorized-keys:
+  - VIRL-USER-SSH-PUBLIC-KEY
+  sudo: ALL=(ALL) ALL
+write_files:
+- path: /etc/systemd/system/dhclient@.service
+  content: |
+    [Unit]
+    Description=Run dhclient on %i interface
+    After=network.target
+    [Service]
+    Type=oneshot
+    ExecStart=/sbin/dhclient %i -pf /var/run/dhclient.%i.pid -lf /var/lib/dhclient/dhclient.%i.lease
+    RemainAfterExit=yes
+  owner: root:root
+  permissions: '0644'
+- path: /etc/rc.local
+  owner: root:root
+  permissions: '0755'
+  content: |-
+    #!/bin/sh
+    ifconfig eth1 up 10.0.5.253 netmask 255.255.255.0
+    route add -net 10.0.0.0/8 gw 10.0.5.1 dev eth1
+    exit 0
+</entry>
+        </extensions>
+        <interface id="0" name="eth1" ipv4="10.0.0.9" netPrefixLenV4="29"/>
+    </node>
+    <node name="lxc-4" type="SIMPLE" subtype="lxc" location="836,148">
+        <extensions>
+            <entry key="config" type="String">#cloud-config
+bootcmd:
+- ln -s -t /etc/rc.d /etc/rc.local
+hostname: lxc-4
+manage_etc_hosts: true
+runcmd:
+- systemctl start rc-local
+- sed -i '/^\s*PasswordAuthentication\s\+no/d' /etc/ssh/sshd_config
+- echo "UseDNS no" &gt;&gt; /etc/ssh/sshd_config
+- service ssh restart
+- service sshd restart
+users:
+- default
+- gecos: User configured by VIRL Configuration Engine 0.23.10
+  lock-passwd: false
+  name: cisco
+  plain-text-passwd: cisco
+  shell: /bin/bash
+  ssh-authorized-keys:
+  - VIRL-USER-SSH-PUBLIC-KEY
+  sudo: ALL=(ALL) ALL
+write_files:
+- path: /etc/systemd/system/dhclient@.service
+  content: |
+    [Unit]
+    Description=Run dhclient on %i interface
+    After=network.target
+    [Service]
+    Type=oneshot
+    ExecStart=/sbin/dhclient %i -pf /var/run/dhclient.%i.pid -lf /var/lib/dhclient/dhclient.%i.lease
+    RemainAfterExit=yes
+  owner: root:root
+  permissions: '0644'
+- path: /etc/rc.local
+  owner: root:root
+  permissions: '0755'
+  content: |-
+    #!/bin/sh
+    ifconfig eth1 up 10.0.6.253 netmask 255.255.255.0
+    route add -net 10.0.0.0/8 gw 10.0.6.1 dev eth1
+    exit 0
+</entry>
+        </extensions>
+        <interface id="0" name="eth1" ipv4="10.0.0.10" netPrefixLenV4="29"/>
+    </node>
+    <annotations/>
+    <connection dst="/virl:topology/virl:node[3]/virl:interface[1]" src="/virl:topology/virl:node[5]/virl:interface[1]"/>
+    <connection dst="/virl:topology/virl:node[3]/virl:interface[2]" src="/virl:topology/virl:node[2]/virl:interface[1]"/>
+    <connection dst="/virl:topology/virl:node[6]/virl:interface[1]" src="/virl:topology/virl:node[2]/virl:interface[2]"/>
+    <connection dst="/virl:topology/virl:node[1]/virl:interface[1]" src="/virl:topology/virl:node[6]/virl:interface[2]"/>
+    <connection dst="/virl:topology/virl:node[4]/virl:interface[1]" src="/virl:topology/virl:node[1]/virl:interface[2]"/>
+    <connection dst="/virl:topology/virl:node[3]/virl:interface[3]" src="/virl:topology/virl:node[7]/virl:interface[1]"/>
+    <connection dst="/virl:topology/virl:node[3]/virl:interface[4]" src="/virl:topology/virl:node[8]/virl:interface[1]"/>
+    <connection dst="/virl:topology/virl:node[9]/virl:interface[1]" src="/virl:topology/virl:node[4]/virl:interface[2]"/>
+    <connection dst="/virl:topology/virl:node[4]/virl:interface[3]" src="/virl:topology/virl:node[10]/virl:interface[1]"/>
+</topology>
