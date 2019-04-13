@@ -7,7 +7,7 @@
         <extensions>
             <entry key="Auto-generate config" type="Boolean">false</entry>
             <entry key="config" type="String">!
-! Last configuration change at 15:01:00 UTC Sat Apr 13 2019 by cisco
+! Last configuration change at 18:12:17 UTC Sat Apr 13 2019 by cisco
 !
 version 16.6
 service config
@@ -132,6 +132,18 @@ redundancy
 !
 !
 !
+crypto isakmp policy 1
+ encr aes
+ authentication pre-share
+ group 14
+crypto isakmp key SECRET address 173.36.217.72  
+!
+!
+crypto ipsec transform-set VPN esp-aes esp-sha-hmac 
+ mode tunnel
+!
+crypto ipsec profile VPN-Profile
+ set transform-set VPN 
 !
 !
 !
@@ -141,6 +153,22 @@ redundancy
 ! 
 ! 
 !
+!
+interface Loopback0
+ ip address 192.168.7.7 255.255.255.255
+ ip ospf 1 area 0
+!
+interface Tunnel2
+ ip address 10.0.20.1 255.255.255.0
+ ip ospf network point-to-point
+ ip ospf 1 area 0
+ load-interval 30
+ tunnel source GigabitEthernet2
+ tunnel mode ipsec ipv4
+ tunnel destination 173.36.217.72
+ tunnel protection ipsec profile VPN-Profile
+!
+interface LISP0
 !
 interface GigabitEthernet1
  vrf forwarding Mgmt-intf
@@ -164,10 +192,41 @@ interface GigabitEthernet3
 interface GigabitEthernet3.5
  encapsulation dot1Q 5
  ip address 10.0.5.1 255.255.255.0
+ lisp mobility LISP1
 !
 interface GigabitEthernet3.6
  encapsulation dot1Q 6
  ip address 10.0.6.1 255.255.255.0
+!
+router lisp
+ locator-set DC1
+  192.168.7.7 priority 1 weight 100
+  exit-locator-set
+ !
+ service ipv4
+  itr map-resolver 192.168.6.6
+  itr
+  etr map-server 192.168.6.6 key cisco
+  etr
+  use-petr 192.168.6.6
+  exit-service-ipv4
+ !
+ instance-id 0
+  dynamic-eid LISP1
+   database-mapping 10.0.5.0/24 locator-set DC1
+   map-notify-group 239.0.0.1
+   exit-dynamic-eid
+  !
+  service ipv4
+   eid-table default
+   exit-service-ipv4
+  !
+  exit-instance-id
+ !
+ exit-router-lisp
+!
+router ospf 1
+ router-id 192.168.7.7
 !
 !
 virtual-service csr_mgmt
@@ -248,7 +307,7 @@ end
         <extensions>
             <entry key="Auto-generate config" type="Boolean">false</entry>
             <entry key="config" type="String">!
-! Last configuration change at 15:19:08 UTC Sat Apr 13 2019 by cisco
+! Last configuration change at 18:17:18 UTC Sat Apr 13 2019 by cisco
 !
 version 16.6
 service config
@@ -353,6 +412,7 @@ crypto pki certificate chain TP-self-signed-3185813904
 !
 !
 license udi pid CSR1000V sn 9Y1WAC8DXYD
+license accept end user agreement
 diagnostic bootup level minimal
 spanning-tree extend system-id
 !
@@ -374,6 +434,18 @@ redundancy
 !
 !
 !
+crypto isakmp policy 1
+ encr aes
+ authentication pre-share
+ group 14
+crypto isakmp key SECRET address 75.126.47.99   
+!
+!
+crypto ipsec transform-set VPN esp-aes esp-sha-hmac 
+ mode tunnel
+!
+crypto ipsec profile VPN-Profile
+ set transform-set VPN 
 !
 !
 !
@@ -383,6 +455,22 @@ redundancy
 ! 
 ! 
 !
+!
+interface Loopback0
+ ip address 192.168.6.6 255.255.255.255
+ ip ospf 1 area 0
+!
+interface Tunnel2
+ ip address 10.0.20.2 255.255.255.0
+ ip ospf network point-to-point
+ ip ospf 1 area 0
+ load-interval 30
+ tunnel source GigabitEthernet3
+ tunnel mode ipsec ipv4
+ tunnel destination 75.126.47.99
+ tunnel protection ipsec profile VPN-Profile
+!
+interface LISP0
 !
 interface GigabitEthernet1
  vrf forwarding Mgmt-intf
@@ -400,6 +488,7 @@ interface GigabitEthernet2
 interface GigabitEthernet2.5
  encapsulation dot1Q 5
  ip address 10.0.5.10 255.255.255.0
+ lisp mobility LISP1
 !
 interface GigabitEthernet2.6
  encapsulation dot1Q 6
@@ -410,6 +499,43 @@ interface GigabitEthernet3
  negotiation auto
  no mop enabled
  no mop sysid
+!
+router lisp
+ locator-set DC1
+  192.168.6.6 priority 1 weight 100
+  exit-locator-set
+ !
+ service ipv4
+  itr map-resolver 192.168.6.6
+  etr map-server 192.168.6.6 key cisco
+  etr
+  proxy-etr
+  proxy-itr 192.168.6.6
+  map-server
+  map-resolver
+  exit-service-ipv4
+ !
+ instance-id 0
+  dynamic-eid LISP1
+   database-mapping 10.0.5.0/24 locator-set DC1
+   map-notify-group 239.0.0.1
+   exit-dynamic-eid
+  !
+  service ipv4
+   eid-table default
+   exit-service-ipv4
+  !
+  exit-instance-id
+ !
+ site DATA_CENTER
+  authentication-key cisco
+  eid-record 10.0.5.0/24 accept-more-specifics
+  exit-site
+ !
+ exit-router-lisp
+!
+router ospf 1
+ router-id 192.168.6.6
 !
 !
 virtual-service csr_mgmt
