@@ -7,7 +7,7 @@
         <extensions>
             <entry key="Auto-generate config" type="Boolean">false</entry>
             <entry key="config" type="String">!
-! Last configuration change at 18:12:17 UTC Sat Apr 13 2019 by cisco
+! Last configuration change at 15:52:50 UTC Sun Apr 14 2019 by cisco
 !
 version 16.6
 service config
@@ -197,9 +197,10 @@ interface GigabitEthernet3.5
 interface GigabitEthernet3.6
  encapsulation dot1Q 6
  ip address 10.0.6.1 255.255.255.0
+ lisp mobility LISP2
 !
 router lisp
- locator-set DC1
+ locator-set CLOUD
   192.168.7.7 priority 1 weight 100
   exit-locator-set
  !
@@ -213,8 +214,13 @@ router lisp
  !
  instance-id 0
   dynamic-eid LISP1
-   database-mapping 10.0.5.0/24 locator-set DC1
+   database-mapping 10.0.5.0/24 locator-set CLOUD
    map-notify-group 239.0.0.1
+   exit-dynamic-eid
+  !
+  dynamic-eid LISP2
+   database-mapping 10.0.6.0/24 locator-set CLOUD
+   map-notify-group 239.0.0.2
    exit-dynamic-eid
   !
   service ipv4
@@ -307,7 +313,7 @@ end
         <extensions>
             <entry key="Auto-generate config" type="Boolean">false</entry>
             <entry key="config" type="String">!
-! Last configuration change at 18:17:18 UTC Sat Apr 13 2019 by cisco
+! Last configuration change at 16:04:12 UTC Sun Apr 14 2019 by cisco
 !
 version 16.6
 service config
@@ -493,6 +499,7 @@ interface GigabitEthernet2.5
 interface GigabitEthernet2.6
  encapsulation dot1Q 6
  ip address 10.0.6.10 255.255.255.0
+ lisp mobility LISP2
 !
 interface GigabitEthernet3
  ip address 173.36.217.72 255.255.255.0
@@ -521,6 +528,11 @@ router lisp
    map-notify-group 239.0.0.1
    exit-dynamic-eid
   !
+  dynamic-eid LISP2
+   database-mapping 10.0.6.0/24 locator-set DC1
+   map-notify-group 239.0.0.2
+   exit-dynamic-eid
+  !
   service ipv4
    eid-table default
    exit-service-ipv4
@@ -530,6 +542,7 @@ router lisp
  site DATA_CENTER
   authentication-key cisco
   eid-record 10.0.5.0/24 accept-more-specifics
+  eid-record 10.0.6.0/24 accept-more-specifics
   exit-site
  !
  exit-router-lisp
@@ -540,6 +553,7 @@ router ospf 1
 !
 virtual-service csr_mgmt
 !
+iox
 ip forward-protocol nd
 no ip http server
 ip http authentication local
