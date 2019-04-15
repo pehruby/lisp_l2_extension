@@ -4,7 +4,7 @@ A VIRL lab based on an example described [here](https://www.cisco.com/c/en/us/pr
 
 Another example is [here](https://www.cisco.com/c/en/us/td/docs/routers/csr1000/software/aws/b_csraws/configure-lisp-layer2-extension.html)
 
-The lab expects you are using virlutils to manage your VIRL simulations.
+The lab expects you are using [virlutils](https://github.com/CiscoDevNet/virlutils) to manage your VIRL simulations.
 
 ## Setup
 
